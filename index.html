@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <!-- Render All Elements Normally -->
-    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/normalize.css" />
     <!-- CSS File -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
     <!-- Font Awesome Library -->
-    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/all.min.css" />
     <meta 
     http-equiv="X-UA-Compatible" 
     content="IE=edge"
@@ -24,16 +24,22 @@
     <title>NBH Coffee Shop</title>
   </head>
   <body>
-    <!-- Header -->
+    <!-- Header Section -->
     <header>
       <div class="container">
         <a href="#" class="logo">
           <img src="Images/logo.png" alt="logo" class="logo-img" />
         </a>
-        <nav class="header-nav">
-          <ul class="main-nav">
+        <nav class="main-nav">
+          <input type="checkbox" id="burger" class="check" />
+          <label for="burger" class="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+          <ul class="desktop-links">
             <li><a href="#home">home</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="#about">about</a></li>
             <li><a href="#menu">menu</a></li>
             <li>
               <a href="#">other links</a>
@@ -59,6 +65,16 @@
                 </div>
             </li>
           </ul>
+          <ul class="mobile-links">
+            <li><a href="#home">home</a></li>
+            <li><a href="#about">about</a></li>
+            <li><a href="#menu">menu</a></li>
+            <li><a href="#products">products</a></li>
+            <li><a href="#testimonials">testimonials</a></li>
+            <li><a href="#reservation">reservation</a></li>
+            <li><a href="#blogs">our blogs</a></li>
+            <li><a href="#subscribe">subscribe</a> </li>
+          </ul>
         </nav>
         <div class="header-icons">
           <i class="fa-solid fa-magnifying-glass"></i>
@@ -66,7 +82,7 @@
         </div>
       </div>
     </header>
-    <!-- Landing -->
+    <!-- Landing Section -->
     <div class="landing" id="home">
       <div class="container">
         <div class="content">
@@ -202,19 +218,6 @@
           </div>
         </div>
     </section>
-    <!-- Coffee Machine Section -->
-    <!-- <section class="machine">
-      <div class="container">
-        <div class="content">
-          <h2 class="title">coffee machine, buy for home</h2>
-          <p></p>
-          <p></p>
-        </div>
-        <div class="image">
-          <img src="" alt="Coffee Maker Machine">
-        </div>
-      </div>
-    </section> -->
     <!-- Product Section -->
     <section class="products" id="products">
       <div class="section-heading">
@@ -397,7 +400,7 @@
         </div>
       </div>
     </section>
-    <!-- Footer -->
+    <!-- Footer Section -->
     <footer>
       <div class="hr">
         <a href="#home" class="up" title="GO TOP">
@@ -447,10 +450,10 @@
           </div>
         </div>
       </div>
-      <p class="copyright">
-        coded by <a href="https://github.com/AbdulrahmanFE" class="author">ABDULRAHMAN FE</a>
-        <span>&copy; 2022 NBH all right reserved</span>
-      </p>
+      <div class="copyright-container">
+        <p class="rights">&copy; 2022 NBH all right reserved</p>
+        <p class="coded">coded by <a href="https://github.com/AbdulrahmanFE" target="_blank" rel="noopener noreferrer" class="author">ABDULRAHMAN</a></p>
+      </div>
     </footer>
   </body>
 </html>
