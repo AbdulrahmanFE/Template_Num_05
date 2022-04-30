@@ -169,11 +169,10 @@
   header .main-nav > ul > li > a:hover::before {
     width: 100%
   }
-  
   header .header-icons {
     display: flex;
   }
-  header .header-icons i{
+  header .header-icons i {
     color: var(--MainAltColor);
     transition: var( --MainTransition);
     padding: 0 10px;
@@ -275,20 +274,40 @@
       visibility: visible;
       z-index: 111;
     }
-    header .main-nav .mobile-links a {
+    header .main-nav ul.mobile-links > li:not(:last-child) {
+      border-bottom: 1px solid #333;
+    }
+    header .main-nav ul.mobile-links > li > a {
       padding: 20px;
     }
-    header .main-nav .mobile-links a::before {
+    header .main-nav ul.mobile-links > li > a::before {
       top: unset;
       bottom: 0;
     }
+    header .header-icons i {
+      font-size: 18px;
+    }
   }
-  @media (max-width: 425px) {
+  @media (max-width: 525px) {
+    header .container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    header .container .logo {
+      display: block;
+      margin: 10px auto 0;
+    }
     header .main-nav .check + .burger {
+      top: unset;
+      transform: unset;
+      bottom: 20px;
       right: 15px;
     }
     header .header-icons {
-      display: none;
+      gap: 20px;
+    }
+    header .header-icons i {
+      padding: 20px 0;
     }
   }
 /* Styling The Landing Section */
@@ -350,19 +369,21 @@
   }
   .landing .social {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
   }
   .landing .social a {
     color: var(--MainAltColor);
     font-size: 16px;
+    padding: 0 10px;
     transition: var(--MainTransition);
+  }
+  .landing .social a:first-child {
+    padding-left: 0;
   }
   .landing .social a:hover {
     color: var(--color);
   }
   .social i {
-    padding-right: 8px;
+    padding-right: 6px;
   }
 /* ----- Making The Landing Section Responsive ----- */
   @media (max-width: 767px) {
@@ -381,19 +402,22 @@
     }
     .landing-buttons {
       justify-content: center;
-      gap: 16px;
     }
   }
-  @media (max-width: 575px) {
+  @media (max-width: 525px) {
+    .landing {
+      padding-top: 200px;
+    }
+    .landing-title {
+      font-size: 2rem;
+    }
     .landing-buttons {
-      gap: 12px;
+      gap: 14px;
     }
     .landing-button {
-      padding: 10px 14px;
+      font-size: 14px;
+      padding: 10px 16px;
       letter-spacing: normal;
-    }
-    .landing .social {
-      gap: 10px;
     }
     .landing .social a {
       font-size: 14px;
@@ -406,8 +430,13 @@
     .landing-button {
       padding: 10px 12px;
     }
+    .landing .social {
+      flex-wrap: wrap;
+      gap: 15px;
+    }
     .landing .social a {
       font-size: 12px;
+      padding: 0;
     }
   }
 /* Styling The First Section */
@@ -416,9 +445,8 @@
     padding-bottom: var(--MainPaddingBottom);
   }
   .first-section > .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
   }
   .first-section .box {
@@ -428,7 +456,7 @@
     height: 250px;
     padding: 20px;
     counter-increment: box-num;
-    box-shadow: inset 0 0 300px #000;
+    z-index: 1;
     position: relative;
     cursor: pointer;
     overflow: hidden;
@@ -456,17 +484,13 @@
   .first-section .box::after {
     content: "";
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: -1px;
-    background-color: var(--MainColor);
-    height: 4px;
-    width: 0;
-    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: rgb(0 0 0 / 65%);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
     transition: var(--MainTransition);
-  }
-  .first-section .box:hover::after {
-    width: 105%;
   }
   .first-section .box-title {
     color: var(--MainAltColor);
@@ -477,22 +501,21 @@
   .first-section .box-des {
     color: #fff;
     visibility: hidden;
-    transition: 0.1s;
+    opacity: 0;
+    transition: var(--MainTransition) ease;
   }
   .first-section .box:hover .box-des {
     visibility: visible;
+    opacity: 1;
   }
 /* ----- Making The First Section Responsive ----- */
-  @media (max-width: 991px) {
-    .first-section > .container {
-      flex-direction: column;
+  @media (max-width: 675px) {
+    .first-section .box {
+      max-width: 450px;
+      margin: 0 auto;
     }
   }
   @media (max-width: 499px) {
-    .first-section > .container {
-      width: 95%;
-      margin: 0 auto;
-    }
     .first-section .box-title {
       font-size: 18px;
     }
@@ -501,6 +524,9 @@
     }
   }
   @media (max-width: 375px) {
+    .first-section > .container {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    }
     .first-section .box {
       height: 200px !important;
     }
@@ -730,15 +756,14 @@
     margin-left: 10px;
   }
 /* ----- Making The Menu Section Responsive ----- */
-  @media (max-width: 667px) {
+  @media (max-width: 700px) {
     .menu .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
     .menu .box {
       width: 100%;
+      max-width: 450px;
+      margin: 0 auto;
     }
     .menu img {
       width: 80px;
@@ -850,23 +875,22 @@
   }
 /* ----- Making The Product Section Responsive ----- */
   @media (max-width: 767px) {
-    .products .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      }
-      .products .box {
-        width: 100%;
-      }
-      .product-icons i {
-        padding: 12px 10px;
-      }
-      .products .box img {
-        width: calc(151px - 26px);
-      }
+    .products .box {
+      width: 100%;
+      max-width: 450px;
+      margin: 0 auto;
+    }
+    .product-icons i {
+      padding: 12px 10px;
+    }
+    .products .box img {
+      width: calc(151px - 26px);
+    }
   }
   @media (max-width: 375px) {
+    .products .container {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
     .products .box img {
       width: calc(100% - 70%);
     }
@@ -1084,8 +1108,8 @@
   }
   .blogs .box {
     border: 1px solid #444;
-    border-radius: 2px;
-    cursor: pointer;
+    border-radius: 4px;
+    overflow: hidden;
     transition: var(--MainTransition);
   }
   .blogs .box:hover {
@@ -1108,14 +1132,14 @@
   }
   .blogs .subject {
     padding: 1rem 0;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.7;
-    color: var(--MainAltColor);
+    color: #DDD;
   }
   .blog-bth {
     text-transform: uppercase;
     color: #bbb;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 14px;
     transition: var(--MainTransition);
   }
